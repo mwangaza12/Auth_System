@@ -3,3 +3,16 @@ node_modules
 .env
 
 /src/generated/prisma
+
+# Prisma
+**/generated/
+node_modules/.prisma/
+*.prisma-client/
+
+# Build output
+dist/
+
+# Environment
+.env
+.env.local
+.env.*.local

@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  // Remove or comment out the output line
 }
 
 datasource db {
@@ -22,8 +22,8 @@ model OtpVerification {
   id        String   @id @default(cuid())
   otp       String
   expiresAt DateTime
-  attempts  Int      @default(0)
   createdAt DateTime @default(now())
+  attempts  Int      @default(0)
 
   userId    String   @unique
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
