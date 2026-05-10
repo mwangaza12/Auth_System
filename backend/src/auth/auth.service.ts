@@ -1,7 +1,7 @@
 import { prisma } from "../db.js";
 import bcrypt from "bcrypt";
 import crypto from "node:crypto";
-import { sendOtpEmail } from "../middlewares/googleMailer.js";
+import { sendOtpEmail } from "../middlewares/googleMailer";
 
 // ---- REGISTER ----
 export const registerService = async (email: string, name: string) => {
