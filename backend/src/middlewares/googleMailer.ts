@@ -8,14 +8,19 @@ const transporter = nodemailer.createTransport({
     user: process.env.EMAIL_SENDER,
     pass: process.env.EMAIL_PASSWORD,
   },
-});
+  tls: {
+    rejectUnauthorized: true,
+  },
+  // @ts-ignore - family is valid but not in types
+  family: 4, // Force IPv4
+} as any);
 
 export const sendOtpEmail = async (email: string, otp: string): Promise<void> => {
   try {
     const info = await transporter.sendMail({
-      from: `"Auth OTP" <${process.env.EMAIL_SENDER}>`, // 👈 updated
+      from: `"Auth OTP" <${process.env.EMAIL_SENDER}>`,
       to: email,
-      subject: "Your OTP Code | Auth OTP", // 👈 updated
+      subject: "Your OTP Code | Auth OTP",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 400px; margin: auto;">
           <h2>Your One-Time Password</h2>
